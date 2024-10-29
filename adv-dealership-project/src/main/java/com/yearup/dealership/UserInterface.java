@@ -51,16 +51,39 @@ public class UserInterface {
                 case "i":
                     processRemoveVehicleRequest();
                     break;
+                case "j":
+
                 case "x":
                     System.out.println("Exiting application...");
                     done = true; // Set done to true to exit the loop
                     break;
                 default:
-                    System.out.println("Please enter a valid choice (A, B, C, D, E, F, G, H, I, or X):");
+                    System.out.println("Please enter a valid choice (A, B, C, D, E, F, G, H, I, J, or X):");
                     break;
             }
 
         } while (!done); // Repeat until the user chooses to exit
+    }
+
+
+    private void processVehicleContract() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please enter the VIN # of the vehicle you want: ");
+        int vin = getPositiveIntegerInput(scanner.nextLine());
+
+        System.out.print("Would you like to lease or buy? Enter LEASE or SALE: ");
+        String contractType = scanner.nextLine().toUpperCase().trim();
+        if (!contractType.equals("LEASE") || !contractType.equals("SALE")) {
+            return;
+        } else {
+            Vehicle v = dealership.getAllVehicles().stream().filter(vehicle -> vehicle.getVin() == vin).toList().get(0);
+            double processingFee = v.getPrice() < 10000 ? 295 : 495;
+
+            if (contractType.equals("SALE")) {
+                //Contract contract = new SalesContract();
+            }
+        }
+
     }
 
     // Displays the list of vehicles to the user
@@ -268,6 +291,7 @@ public class UserInterface {
                     G) Show all vehicles
                     H) Add new vehicle to dealership
                     I) Remove vehicle from dealership
+                    J) Buy Vehicle
                     X) Exit application
                     """);
     }

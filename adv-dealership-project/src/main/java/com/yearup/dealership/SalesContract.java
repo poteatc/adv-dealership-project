@@ -1,28 +1,42 @@
 package com.yearup.dealership;
 
+
+// CSV File format
+// [SALE, date, name, email, vin, year, make, model, type, color, odometer, price,
+//  salesTaxAmount, recordingFee, processingFee, totalPrice, isFinancing, monthlyPayment]
 public class SalesContract extends Contract {
 
-    private final double salesTaxAmount = .05;
-    private final int recordingFee = 100;
-    private int processingFee;
-    private boolean financing;
+    private double salesTaxAmount = 0.5;
+    private double recordingFee = 100.0;
+    private double processingFee;
+    private boolean isFinancing;
 
-    public SalesContract(String date, String customerName, String customerEmail, boolean vehicleSold, int processingFee, boolean financing) {
+    public SalesContract(String date, String customerName, String customerEmail, boolean vehicleSold,
+                         double salesTaxAmount, double recordingFee, double processingFee, boolean isFinancing) {
         super(date, customerName, customerEmail, vehicleSold);
+        this.salesTaxAmount = salesTaxAmount;
+        this.recordingFee = recordingFee;
         this.processingFee = processingFee;
-        this.financing = financing;
+        this.isFinancing = isFinancing;
+    }
+
+    public void setSalesTaxAmount(double salesTaxAmount) {
+        this.salesTaxAmount = salesTaxAmount;
+    }
+
+    public void setRecordingFee(int recordingFee) {
+        this.recordingFee = recordingFee;
     }
 
     public double getSalesTaxAmount() {
         return salesTaxAmount;
     }
 
-
-    public int getRecordingFee() {
+    public double getRecordingFee() {
         return recordingFee;
     }
 
-    public int getProcessingFee() {
+    public double getProcessingFee() {
         return processingFee;
     }
 
@@ -31,11 +45,11 @@ public class SalesContract extends Contract {
     }
 
     public boolean isFinancing() {
-        return financing;
+        return isFinancing;
     }
 
     public void setFinancing(boolean financing) {
-        this.financing = financing;
+        this.isFinancing = financing;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.yearup.dealership;
 
+// CSV File format
+// [SALE/LEASE, date, name, email, vin, year, make, model, type, color, odometer, price]
 public abstract class Contract {
     private String date;
     private String customerName;

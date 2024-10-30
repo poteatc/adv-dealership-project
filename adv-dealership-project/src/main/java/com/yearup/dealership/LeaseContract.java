@@ -8,7 +8,7 @@ public class LeaseContract extends Contract {
     private final double expectedEndingValuePercent = 0.5;
     private final double leaseFee = .07;
 
-    public LeaseContract(String date, String customerName, String customerEmail, boolean vehicleSold) {
+    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
         super(date, customerName, customerEmail, vehicleSold);
     }
 

@@ -11,7 +11,7 @@ public class SalesContract extends Contract {
     private double processingFee;
     private boolean isFinancing;
 
-    public SalesContract(String date, String customerName, String customerEmail, boolean vehicleSold,
+    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold,
                          double processingFee, boolean isFinancing) {
         super(date, customerName, customerEmail, vehicleSold);
         this.processingFee = processingFee;
@@ -54,6 +54,7 @@ public class SalesContract extends Contract {
 
     @Override
     String toStringRepresentation() {
-        return "";
+        return String.format("SALE|%s|%s|%s|%s"
+        , getDate(), getCustomerName(), getCustomerEmail(), getVehicleSold().toCSVFormat());
     }
 }

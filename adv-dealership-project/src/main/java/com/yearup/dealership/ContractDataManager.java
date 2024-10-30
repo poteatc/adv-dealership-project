@@ -11,6 +11,7 @@ public class ContractDataManager {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
                 // TODO implement toString for each contract type
                 bw.write(contract.toStringRepresentation());
+                bw.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }

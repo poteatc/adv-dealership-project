@@ -94,7 +94,7 @@ public class UserInterface {
                 System.out.printf("Would you like to finance your new vehicle? Enter 'Y' for yes or any other key for no: ");
                 String financingInput = scanner.nextLine().trim().toLowerCase();
                 boolean isFinancing = financingInput.equalsIgnoreCase("y") ? true : false;
-                Contract contract = new SalesContract(date, name, email, true, processingFee, isFinancing);
+                Contract contract = new SalesContract(date, name, email, v, processingFee, isFinancing);
                 new ContractDataManager().saveContract(contract);
             }
         }

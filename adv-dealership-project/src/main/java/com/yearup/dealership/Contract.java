@@ -22,6 +22,8 @@ public abstract class Contract {
 
     abstract double getMonthlyPayment();
 
+    abstract String toStringRepresentation();
+
     public String getDate() {
         return date;
     }

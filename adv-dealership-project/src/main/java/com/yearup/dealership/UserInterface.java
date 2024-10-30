@@ -1,5 +1,6 @@
 package com.yearup.dealership;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,7 +53,8 @@ public class UserInterface {
                     processRemoveVehicleRequest();
                     break;
                 case "j":
-
+                    processVehicleContract();
+                    break;
                 case "x":
                     System.out.println("Exiting application...");
                     done = true; // Set done to true to exit the loop
@@ -71,16 +73,29 @@ public class UserInterface {
         System.out.print("Please enter the VIN # of the vehicle you want: ");
         int vin = getPositiveIntegerInput(scanner.nextLine());
 
+        String date = LocalDate.now().toString();
+
+        System.out.print("Please enter your name: ");
+        String name = scanner.nextLine().toUpperCase().trim();
+
+        System.out.print("Please enter your email: ");
+        String email = scanner.nextLine().toUpperCase().trim();
+
         System.out.print("Would you like to lease or buy? Enter LEASE or SALE: ");
         String contractType = scanner.nextLine().toUpperCase().trim();
-        if (!contractType.equals("LEASE") || !contractType.equals("SALE")) {
+
+        if (!(contractType.equalsIgnoreCase("LEASE") || contractType.equalsIgnoreCase("SALE"))) {
+            System.out.println("Please enter 'LEASE' or 'SALE'...");
             return;
         } else {
             Vehicle v = dealership.getAllVehicles().stream().filter(vehicle -> vehicle.getVin() == vin).toList().get(0);
-            double processingFee = v.getPrice() < 10000 ? 295 : 495;
-
             if (contractType.equals("SALE")) {
-                //Contract contract = new SalesContract();
+                double processingFee = v.getPrice() < 10000 ? 295 : 495;
+                System.out.printf("Would you like to finance your new vehicle? Enter 'Y' for yes or any other key for no: ");
+                String financingInput = scanner.nextLine().trim().toLowerCase();
+                boolean isFinancing = financingInput.equalsIgnoreCase("y") ? true : false;
+                Contract contract = new SalesContract(date, name, email, true, processingFee, isFinancing);
+                new ContractDataManager().saveContract(contract);
             }
         }
 

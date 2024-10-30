@@ -6,15 +6,14 @@ import java.io.IOException;
 
 public class ContractDataManager {
     public void saveContract(Contract contract) {
-        if (contract instanceof SalesContract) {
             try {
                 String filePath = "src/main/resources/contracts-backup.csv";
-                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
+                BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
+                // TODO implement toString for each contract type
+                bw.write(contract.toStringRepresentation());
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (contract instanceof LeaseContract) {
 
-        }
     }
 }

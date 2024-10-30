@@ -5,30 +5,19 @@ package com.yearup.dealership;
 //  expectedEndingValue, leaseFee, totalPrice, monthlyPayment]
 public class LeaseContract extends Contract {
 
-    private double expectedEndingValue = .5;
-    private double leaseFee = .07;
+    private final double expectedEndingValuePercent = 0.5;
+    private final double leaseFee = .07;
 
-    public LeaseContract(String date, String customerName, String customerEmail, boolean vehicleSold,
-                         double expectedEndingValue, double leaseFee) {
+    public LeaseContract(String date, String customerName, String customerEmail, boolean vehicleSold) {
         super(date, customerName, customerEmail, vehicleSold);
-        this.expectedEndingValue = expectedEndingValue;
-        this.leaseFee = leaseFee;
     }
 
-    public double getExpectedEndingValue() {
-        return expectedEndingValue;
-    }
-
-    public void setExpectedEndingValue(double expectedEndingValue) {
-        this.expectedEndingValue = expectedEndingValue;
+    public double getExpectedEndingValuePercent() {
+        return expectedEndingValuePercent;
     }
 
     public double getLeaseFee() {
         return leaseFee;
-    }
-
-    public void setLeaseFee(double leaseFee) {
-        this.leaseFee = leaseFee;
     }
 
     @Override
@@ -39,5 +28,10 @@ public class LeaseContract extends Contract {
     @Override
     double getMonthlyPayment() {
         return 0;
+    }
+
+    @Override
+    String toStringRepresentation() {
+        return "";
     }
 }

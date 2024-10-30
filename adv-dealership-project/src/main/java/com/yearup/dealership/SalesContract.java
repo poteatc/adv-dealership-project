@@ -6,26 +6,16 @@ package com.yearup.dealership;
 //  salesTaxAmount, recordingFee, processingFee, totalPrice, isFinancing, monthlyPayment]
 public class SalesContract extends Contract {
 
-    private double salesTaxAmount = 0.5;
-    private double recordingFee = 100.0;
+    private final double salesTaxAmount = 0.5;
+    private final double recordingFee = 100.0;
     private double processingFee;
     private boolean isFinancing;
 
     public SalesContract(String date, String customerName, String customerEmail, boolean vehicleSold,
-                         double salesTaxAmount, double recordingFee, double processingFee, boolean isFinancing) {
+                         double processingFee, boolean isFinancing) {
         super(date, customerName, customerEmail, vehicleSold);
-        this.salesTaxAmount = salesTaxAmount;
-        this.recordingFee = recordingFee;
         this.processingFee = processingFee;
         this.isFinancing = isFinancing;
-    }
-
-    public void setSalesTaxAmount(double salesTaxAmount) {
-        this.salesTaxAmount = salesTaxAmount;
-    }
-
-    public void setRecordingFee(int recordingFee) {
-        this.recordingFee = recordingFee;
     }
 
     public double getSalesTaxAmount() {
@@ -60,5 +50,10 @@ public class SalesContract extends Contract {
     @Override
     double getMonthlyPayment() {
         return 0;
+    }
+
+    @Override
+    String toStringRepresentation() {
+        return "";
     }
 }

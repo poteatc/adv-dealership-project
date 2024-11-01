@@ -96,6 +96,9 @@ public class UserInterface {
                 boolean isFinancing = financingInput.equalsIgnoreCase("y") ? true : false;
                 Contract contract = new SalesContract(date, name, email, v, processingFee, isFinancing);
                 new ContractDataManager().saveContract(contract);
+                // TODO remove vehicle from dealership
+            } else if (contractType.equals("LEASE")) {
+
             }
         }
 

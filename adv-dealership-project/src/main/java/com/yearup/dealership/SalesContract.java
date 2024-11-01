@@ -44,7 +44,9 @@ public class SalesContract extends Contract {
 
     @Override
     double getTotalPrice() {
-        return 0;
+        Vehicle v = getVehicleSold();
+        double total = v.getPrice() + v.getPrice() * salesTaxAmount + recordingFee + processingFee;
+        return total;
     }
 
     @Override
@@ -54,7 +56,9 @@ public class SalesContract extends Contract {
 
     @Override
     String toStringRepresentation() {
-        return String.format("SALE|%s|%s|%s|%s"
-        , getDate(), getCustomerName(), getCustomerEmail(), getVehicleSold().toCSVFormat());
+        return String.format("SALE|%s|%s|%s|%s|%.2f|%.2f|%.2f|%.2f|%s|%.2f"
+        , getDate(), getCustomerName(), getCustomerEmail(), getVehicleSold().toCSVFormat()
+        , (getVehicleSold().getPrice() * salesTaxAmount), recordingFee, processingFee, getTotalPrice()
+                , isFinancing ? "YES" : "NO", getMonthlyPayment());
     }
 }

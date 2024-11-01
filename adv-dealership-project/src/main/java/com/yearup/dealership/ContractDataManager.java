@@ -10,7 +10,7 @@ public class ContractDataManager {
                 String filePath = "src/main/resources/contracts-backup.csv";
                 BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));
                 // TODO implement toString for each contract type
-                bw.write(contract.toStringRepresentation());
+                bw.write(contract.toStringRepresentation() + "\n");
                 bw.close();
             } catch (Exception e) {
                 e.printStackTrace();
